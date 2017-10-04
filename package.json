@@ -2,12 +2,12 @@
   "name": "todo-app",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "src/index.js",
   "scripts": {
-    "watch": "nodemon app.js",
+    "watch": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
+  "repository": { 
     "type": "git",
     "url": "git+https://github.com/EngAyoosh/todo-app.git"
   },
