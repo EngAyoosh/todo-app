@@ -1,20 +1,16 @@
 BEGIN;
 
-DROP TABLE IF EXISTS tasks CASCADE;
+DROP TABLE IF EXISTS tasks;
 
-CREATE TABLE "tasks" (
-	"id" serial NOT NULL,
-	"content" varchar(100) NOT NULL,
-	"task_time" timestamp DEFAULT now(),
-	"done" BOOLEAN NOT NULL DEFAULT 'false',
-	CONSTRAINT Tasks_pk PRIMARY KEY ("id")
-) WITH (
-  OIDS=FALSE
+CREATE TABLE tasks (
+  id SERIAL PRIMARY KEY,
+  content VARCHAR(100) not null,
+  task_time TIMESTAMP DEFAULT now(),
+  done BOOLEAN DEFAULT false
 );
 
-INSERT INTO tasks (content) VALUES ('Do Task in your projeect'),
-('Drink tea'),
-('Froget');
+INSERT INTO tasks (content) VALUES ('first task'),
+('second task'),
+('third task');
 
-
-COMMIT;
+COMMIT ;

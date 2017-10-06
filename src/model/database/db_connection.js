@@ -1,10 +1,10 @@
- require('env2')('./config.env');
- const {Pool} = require('pg');
+const { Pool } = require('pg');
 
- if(process.env.DATABASE_URL)
- {
-   throw new Error('No DATABASE_URL Provided');
- }
+require('env2')('./config.env');
 
- const pool = new Pool({connectionString:process.env.DATABASE_URL});
- module.exports = pool;
+if (!process.env.DATABASE_URL) {
+  throw new Error('No DATABASE_URL provided');
+}
+const pool = new Pool({connectionString: process.env.DATABASE_URL});
+
+module.exports = pool;
