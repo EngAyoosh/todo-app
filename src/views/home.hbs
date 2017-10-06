@@ -1,8 +1,21 @@
+<h1> To Do App </h1>
+<form id='todo-app' action="/" method="post">
+  <input name="content" id='content' type="text" required maxlength="100" placeholder="  Task ...">
+  <button class="submit-btn" type="submit" name="button">+ add</button>
+</form>
+<table id="result_container">
 
-  <h1> To Do App </h1>
-  <form id='todo-app'>
-    <input type="text">
-    <input type="submit">
-  </form>
-  <ul id="result_container">
-  </ul>
+  {{#each tasks}}
+    <tr>
+      {{#if done}}
+        <td class="done" onclick="toggleDone({{id}})" id="item-{{id}}">{{content}}</td>
+        <td><button class="delete-btn" onclick="deleteItem({{id}})"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+    </tr>
+    {{else}}
+      <tr>
+        <td onclick="toggleDone({{id}})" id="item-{{id}}">{{content}}</td>
+        <td><button class="delete-btn" onclick="deleteItem({{id}})"><i class="fa fa-trash" aria-hidden="true"></i></button> </td>
+      </tr>
+      {{/if}}
+  {{/each}}
+</table>
