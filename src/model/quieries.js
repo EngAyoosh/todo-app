@@ -27,11 +27,11 @@ function addTask (req, cb) {
 
 function deleteTask (req, cb) {
   return db_Connection.query({
-    text: `DELETE * FROM tasks WHERE id= $1 RETURNING *;`,
+    text: `DELETE FROM tasks WHERE id= $1`,
     values: [req.body.id]
   }, (err, res) => {
     if (err) {
-      console.log('delete task failed');
+      console.log('delete task failed', err);
       cb(err);
     } else {
       cb(null, res.rows);
