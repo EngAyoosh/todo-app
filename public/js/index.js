@@ -10,6 +10,7 @@ function request (url, method, callback, postData) {// eslint-disable-line
   };
   xhttp.open(method, url, true);
   if (postData) {
+    xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.send(postData);
   } else {
     xhttp.send();
@@ -18,18 +19,14 @@ function request (url, method, callback, postData) {// eslint-disable-line
 
 function toggleDone (id) {
   document.getElementById('item-' + id).classList.toggle('done');
-  // request('/', 'put', (err, res) => {
-  //   if (err) throw err;
-  //   else {
-  //     console.log(res);
-  //   }
-  // }, id);
+  request('/', 'put', (err, res) => {
+    if (err) throw err;
+  }, JSON.stringify({id: id}));
 }
+
 function deleteItem (id) {
-  // request('/', 'delete', (err, res) => {
-  //   if (err) throw err;
-  //   else {
-  //     console.log(res);
-  //   }
-  // }, id);
+  document.getElementById('item-' + id).parentElement.remove();
+  request('/', 'delete', (err, res) => {
+    if (err) throw err;
+  }, JSON.stringify({id: id}));
 }
